@@ -1,0 +1,7 @@
+h2.todoTitle > div > span > span {
+    margin-right: 25px;
+    display: flex;
+    justify-content: s;
+    text-align: center;
+    padding-left: 40px;
+}

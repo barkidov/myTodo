@@ -1,0 +1,23 @@
+.gold {
+  color: rgb(201, 174, 22);
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.black {
+  color: black;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.ratingContainer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.spanForRemoveRating {
+  display: block;
+  width: 10px;
+  cursor: pointer;
+}
