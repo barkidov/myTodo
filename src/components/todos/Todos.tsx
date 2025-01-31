@@ -42,7 +42,7 @@ export const Todos = ({
     <>
     <Grid2 container spacing={10}>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} className={style.todoContainer}>
           <Container maxWidth="xs">
           <Paper elevation={5} sx={{ width: "500px", height: "auto", padding: "16px"}}>
             <h2 className={style.todoTitle}>

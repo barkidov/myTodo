@@ -5,3 +5,7 @@ h2.todoTitle > div > span > span {
     text-align: center;
     padding-left: 40px;
 }
+
+.todoContainer {
+    padding-right: 50px;
+}
