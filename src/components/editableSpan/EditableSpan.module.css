@@ -9,6 +9,9 @@ align-items: center;
 padding-left: 5px;
 }
 
-/* .editButton {
-    text-align: end;
-} */
+.editableSpan > input {
+    font-size: 20px;
+    background-color: rgb(212, 212, 212);
+    margin-left: 40px;
+    margin-right: 14px;
+}

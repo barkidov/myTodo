@@ -3,13 +3,13 @@ import {
   TodoAndTaskTitleLengthType,
   TodoType,
 } from "../../App";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { Rating } from "../rating/Rating";
 import { Tasks } from "../tasks/Tasks";
 import { EditableSpan } from "../editableSpan/EditableSpan";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Container, Grid2, Paper } from "@mui/material";
-import style from './Todos.module.css'
+import style from "./Todos.module.css";
 
 type PropsType = {
   todos: TodoType[];
@@ -40,42 +40,55 @@ export const Todos = ({
 }: PropsType) => {
   return (
     <>
-    <Grid2 container spacing={10}>
-      {todos.map((todo) => (
-        <div key={todo.id} className={style.todoContainer}>
-          <Container maxWidth="xs">
-          <Paper elevation={5} sx={{ width: "500px", height: "auto", padding: "16px"}}>
-            <h2 className={style.todoTitle}>
-              <Grid2 display={'flex'} justifyContent={'space-between'}>
-              <EditableSpan
-                title={todo.title}
-                onUpdate={(newTitle: string) =>
-                  updateTodoTitle(todo.id, newTitle)
-                }
-              />
-              <Button sx={{backgroundColor: "rgb(0,0,0)"}} size="large" onClick={() => removeTodoList(todo.id)}>
-                <DeleteIcon color="primary" />
-              </Button>
-              </Grid2>
-            </h2>
-            <Tasks
-              todo={todo}
-              addNewTask={addNewTask}
-              removeTask={removeTask}
-              changeTaskStatus={changeTaskStatus}
-              todoAndTaskTitleLength={todoAndTaskTitleLength}
-              setTodoFilter={setTodoFilter}
-              updateTaskTitle={updateTaskTitle}
-            />
-            <Rating
-              todo={todo}
-              todoRatingStars={todoRatingStars}
-              changeRating={changeRating}
-            />
-          </Paper>
-          </Container>
-        </div>
-      ))}
+      <Grid2 container spacing={10}>
+        {todos.map((todo) => (
+          <div key={todo.id} className={style.todoContainer}>
+            <Container maxWidth="xs">
+              <Paper
+                elevation={5}
+                sx={{ width: "500px", height: "auto", padding: "16px" }}
+              >
+                <h2 className={style.todoTitle}>
+                  <Grid2 display={"flex"} justifyContent={"space-between"}>
+                    <EditableSpan
+                      title={todo.title}
+                      onUpdate={(newTitle: string) =>
+                        updateTodoTitle(todo.id, newTitle)
+                      }
+                    />
+                    <Button
+                      sx={{
+                        backgroundColor: "rgb(0,0,0)",
+                        "&:hover": {
+                          backgroundColor: "rgb(207, 207, 207)",
+                          color: "rgb(0,0,0)",
+                        },
+                      }}
+                      size="large"
+                      onClick={() => removeTodoList(todo.id)}
+                    >
+                      <DeleteIcon color="primary" />
+                    </Button>
+                  </Grid2>
+                </h2>
+                <Tasks
+                  todo={todo}
+                  addNewTask={addNewTask}
+                  removeTask={removeTask}
+                  changeTaskStatus={changeTaskStatus}
+                  todoAndTaskTitleLength={todoAndTaskTitleLength}
+                  setTodoFilter={setTodoFilter}
+                  updateTaskTitle={updateTaskTitle}
+                />
+                <Rating
+                  todo={todo}
+                  todoRatingStars={todoRatingStars}
+                  changeRating={changeRating}
+                />
+              </Paper>
+            </Container>
+          </div>
+        ))}
       </Grid2>
     </>
   );

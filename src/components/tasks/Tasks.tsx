@@ -4,15 +4,14 @@ import {
   TodoAndTaskTitleLengthType,
   TodoType,
 } from "../../App";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { Input } from "../input/Input";
 import { FilteredButtons } from "../filteredButtons/FilteredButtons";
 import style from "./Tasks.module.css";
 import { EditableSpan } from "../editableSpan/EditableSpan";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import TextField from '@mui/material/TextField';
-
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import TextField from "@mui/material/TextField";
 
 type PropsType = {
   todo: TodoType;
@@ -76,10 +75,14 @@ export const Tasks = ({
   ) => {
     changeTaskStatus(todoId, taskId, isDone);
   };
-  
+
   return (
     <ul>
-      <TextField id="standard-basic" label="Add task" variant="filled" color="primary"
+      <TextField
+        id="standard-basic"
+        label="Add task"
+        variant="filled"
+        color="primary"
         value={tasksAddInputValue}
         onChange={(e) => {
           setTasksAddInputValue(e.currentTarget.value);
@@ -87,8 +90,18 @@ export const Tasks = ({
         }}
         onKeyDown={(e) => addTaskKeyDownHandler(e, todo.id, tasksAddInputValue)}
       />
-      <Button sx={{backgroundColor: "rgb(0,0,0)"}} size="large" onClick={() => addNewTaskHandler(todo.id, tasksAddInputValue)}>
-      <AddBoxIcon color='primary' sx={{ fontSize: 40 }}/>
+      <Button
+        sx={{
+          backgroundColor: "rgb(0,0,0)",
+          "&:hover": {
+            backgroundColor: "rgb(207, 207, 207)",
+            color: "rgb(0,0,0)",
+          },
+        }}
+        size="large"
+        onClick={() => addNewTaskHandler(todo.id, tasksAddInputValue)}
+      >
+        <AddBoxIcon color="primary" sx={{ fontSize: 40 }} />
       </Button>
       {taskError && (
         <div style={{ color: "red" }}>
@@ -98,30 +111,44 @@ export const Tasks = ({
         </div>
       )}
       {filteredTasks.map((task) => (
-        <li key={task.id} className={`${task.isDone ? style.checkedTask : ''} ${style.list}`}>
+        <li
+          key={task.id}
+          className={`${task.isDone ? style.checkedTask : ""} ${style.list}`}
+        >
           <div className={style.checkboxAndEditSpan}>
-          <Input
-            type="checkbox"
-            checked={task.isDone}
-            onChange={() =>
-              changeTaskStatusHandler(todo.id, task.id, !task.isDone)
-            }
-          />
-          <EditableSpan
-            title={task.taskTitle}
-            onUpdate={(newTitle: string) =>
-              updateTaskTitle(todo.id, task.id, newTitle)
-            }
-          />
+            <Input
+              type="checkbox"
+              checked={task.isDone}
+              onChange={() =>
+                changeTaskStatusHandler(todo.id, task.id, !task.isDone)
+              }
+            />
+            <EditableSpan
+              title={task.taskTitle}
+              onUpdate={(newTitle: string) =>
+                updateTaskTitle(todo.id, task.id, newTitle)
+              }
+            />
           </div>
-          <Button sx={{backgroundColor: "rgb(0,0,0)"}} size="large" onClick={() => removeTaskHandler(todo.id, task.id)}><DeleteForeverIcon color='primary'/></Button>
+          <Button
+            sx={{
+              backgroundColor: "rgb(0,0,0)",
+              "&:hover": {
+                backgroundColor: "rgb(207, 207, 207)",
+                color: "rgb(0,0,0)",
+              },
+            }}
+            size="large"
+            onClick={() => removeTaskHandler(todo.id, task.id)}
+          >
+            <DeleteForeverIcon color="primary" />
+          </Button>
         </li>
       ))}
       <FilteredButtons
         todoFilterChangeHandler={(filter: FilterValuesType) =>
           setTodoFilter(todo.id, filter)
         }
-        children
       />
     </ul>
   );

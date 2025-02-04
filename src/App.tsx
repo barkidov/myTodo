@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { v1 } from "uuid";
 import style from "./App.module.css";
 import { Todos } from "./components/todos/Todos";
-import Button from '@mui/material/Button';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import TextField from '@mui/material/TextField';
-
+import Button from "@mui/material/Button";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import TextField from "@mui/material/TextField";
 
 export type TaskType = {
   id: string;
@@ -160,7 +159,10 @@ export const App = () => {
 
   return (
     <>
-      <TextField label="Add todo" variant="filled" color="primary"
+      <TextField
+        label="Add todo"
+        variant="filled"
+        color="primary"
         value={todoAddInputValue}
         onChange={(e) => {
           setTodoAddInputValue(e.currentTarget.value);
@@ -168,7 +170,19 @@ export const App = () => {
         }}
         onKeyDown={addTodoKeyDownHandler}
       />
-      <Button sx={{backgroundColor: "rgb(0,0,0)"}} size="large" onClick={() => addNewTodoHandler(todoAddInputValue)}><AddBoxIcon sx={{ fontSize: 40 }} color='primary'/></Button>
+      <Button
+        sx={{
+          backgroundColor: "rgb(0,0,0)",
+          "&:hover": {
+            backgroundColor: "rgb(207, 207, 207)",
+            color: "rgb(0,0,0)",
+          },
+        }}
+        size="large"
+        onClick={() => addNewTodoHandler(todoAddInputValue)}
+      >
+        <AddBoxIcon sx={{ fontSize: 40 }} color="primary" />
+      </Button>
       {todoError && (
         <div style={{ color: "red" }}>
           Название должно быть больше{" "}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Input } from "../input/Input";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import style from './EditableSpan.module.css'
+import style from "./EditableSpan.module.css";
 
 type PropsType = {
   onUpdate: (newTitle: string) => void;
@@ -39,8 +39,19 @@ export const EditableSpan = ({ onUpdate, title }: PropsType) => {
       ) : (
         <span className={style.titleSpan}>{title}</span>
       )}
-      <Button sx={{backgroundColor: "rgb(0,0,0)"}} size="large" className={style.editButton} onClick={changeTitleHandler} >
-        <BorderColorIcon color="primary"/>
+      <Button
+        sx={{
+          backgroundColor: "rgb(0,0,0)",
+          "&:hover": {
+            backgroundColor: "rgb(207, 207, 207)",
+            color: "rgb(0,0,0)",
+          },
+        }}
+        size="large"
+        className={style.editButton}
+        onClick={changeTitleHandler}
+      >
+        <BorderColorIcon color="primary" />
       </Button>
     </span>
   );
